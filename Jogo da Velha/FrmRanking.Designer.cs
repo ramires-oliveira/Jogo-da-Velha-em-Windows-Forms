@@ -63,7 +63,7 @@
             this.lblCronometro.AutoSize = true;
             this.lblCronometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCronometro.ForeColor = System.Drawing.Color.Red;
-            this.lblCronometro.Location = new System.Drawing.Point(406, 9);
+            this.lblCronometro.Location = new System.Drawing.Point(406, 10);
             this.lblCronometro.Name = "lblCronometro";
             this.lblCronometro.Size = new System.Drawing.Size(55, 24);
             this.lblCronometro.TabIndex = 15;
@@ -75,11 +75,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(242, 9);
+            this.label1.Location = new System.Drawing.Point(255, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 24);
+            this.label1.Size = new System.Drawing.Size(150, 24);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Tempo da partida: ";
+            this.label1.Text = "Tempo de jogo: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // notifyIcon1
             // 

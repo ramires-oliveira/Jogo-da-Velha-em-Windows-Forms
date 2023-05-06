@@ -12,9 +12,7 @@ namespace Jogo_da_Velha
 {
     public partial class FrmCadastro : Form
     {
-        int conta = 0;
         public List<Jogador> ListaDeJogadores = new List<Jogador>();
-
 
         public FrmCadastro()
         {
@@ -23,13 +21,12 @@ namespace Jogo_da_Velha
 
         private void cmdCadastrar_Click(object sender, EventArgs e)
         {
-            if(conta < 2)
+            if(ListaDeJogadores.Count < 2)
             {
                 Jogador J = new Jogador();
                 J.Nome = txtNomeJogador.Text;
                 ListaDeJogadores.Add(J);
                 txtNomeJogador.Text = "";
-                conta++;
             }
             else
             {
@@ -37,13 +34,21 @@ namespace Jogo_da_Velha
                 txtNomeJogador.Text = "";
             }
 
+            if(ListaDeJogadores.Count == 2)
+            {
+                frmMenuPrincipal frmmenuprincipal = new frmMenuPrincipal();
+                frmmenuprincipal.ListaDeJogadores = ListaDeJogadores;
 
+                this.Hide();
+                frmmenuprincipal.ShowDialog();
+            }
         }
 
         private void cmdVoltarMenu_Click(object sender, EventArgs e)
         {
             frmMenuPrincipal frmmenuprincipal = new frmMenuPrincipal();
             frmmenuprincipal.ListaDeJogadores = ListaDeJogadores;
+
             this.Hide();
             frmmenuprincipal.ShowDialog();
         }

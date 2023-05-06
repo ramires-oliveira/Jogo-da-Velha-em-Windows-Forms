@@ -19,6 +19,12 @@ namespace Jogo_da_Velha {
         }
 
         private void jogoToolStripMenuItem_Click(object sender, EventArgs e) {
+            if(ListaDeJogadores.Count < 2)
+            {
+                MessageBox.Show("É necessário cadastrar no mínimo 2 jogadores para iniciar!");
+                return;
+            }
+
             FrmJogo frmjogo = new FrmJogo(ListaDeJogadores);
             this.Hide();
             frmjogo.ShowDialog();
@@ -27,6 +33,12 @@ namespace Jogo_da_Velha {
         private void cadastrarJogadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCadastro frmcadastro = new FrmCadastro();
+
+            if(ListaDeJogadores.Count > 0)
+            {
+                frmcadastro.ListaDeJogadores = ListaDeJogadores;
+            }
+            
             this.Hide();
             frmcadastro.ShowDialog();
         }
@@ -39,7 +51,6 @@ namespace Jogo_da_Velha {
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.unifenas.br/computacaoalfenas.asp");
-
         }
     }
 }
