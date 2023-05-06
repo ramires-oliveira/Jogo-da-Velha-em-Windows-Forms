@@ -22,12 +22,16 @@ namespace Jogo_da_Velha
         public FrmRanking(List<Jogador> ListaJog)
         {
             InitializeComponent();
+
             ListaDeJogadores = ListaJog;
             var pontos = ListaDeJogadores.Select(x => x.Pontos);
+            
             if (pontos.First() == pontos.Last())
+            {
                 empate = true;
+            }
 
-            foreach (var item in ListaDeJogadores)
+            foreach (var item in ListaDeJogadores.OrderByDescending(x => x.Pontos))
             {
                 listBox1.Items.Add($"Jogador: {item.Nome}     -     {item.Tipo}     -     { item.Pontos} pontos");
                 if (item.Pontos > maiorponto)
@@ -49,6 +53,11 @@ namespace Jogo_da_Velha
         }
 
         private void lblCronometro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

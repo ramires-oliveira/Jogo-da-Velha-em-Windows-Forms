@@ -25,11 +25,15 @@ namespace Jogo_da_Velha
         public FrmJogo(List<Jogador> ListaJog)
         {
             InitializeComponent();
+            
             ListaDeJogadores = ListaJog;
+
             foreach (var item in ListaDeJogadores)
             {
                 comboBox1.Items.Add(item.Nome);
             }
+
+            bloqueiaJogo();
         }
 
         private void FrmJogo_Load(object sender, EventArgs e)
@@ -57,7 +61,21 @@ namespace Jogo_da_Velha
 
         private void cmdConfirma_Click(object sender, EventArgs e)
         {
+            if(comboBox1.Text == "" || rbX.Checked == false && rbO.Checked == false)
+            {
+                MessageBox.Show("Necessário escolher um jogador e se irá jogar com X ou O para iniciar!");
+                return;
+            }
+
             var nome = comboBox1.Text;
+
+            var confirmaNome = ListaDeJogadores.Where(x => x.Nome == nome);
+            if (confirmaNome.Count() == 0)
+            {
+                MessageBox.Show("Nome não encontrado na lista de jogadores");
+                return;
+            }
+
             P1 = ListaDeJogadores.FirstOrDefault(x => x.Nome == nome);
             P2 = ListaDeJogadores.FirstOrDefault(x => x.Nome != nome);
 
@@ -74,19 +92,23 @@ namespace Jogo_da_Velha
             }
 
             MessageBox.Show($"{ P1.Nome} é o jogador {P1.Tipo}\n{ P2.Nome} é o jogador {P2.Tipo}");
+            MessageBox.Show("Para finalizar o jogo após as partidas, basta clicar em Ranking Final");
+
+            habilitaJogo();
             timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             segundo++;
+
             if (segundo > 59)
             {
                 minutos++;
                 segundo = 0;
             }
-            lblCronometro.Text = Converte(minutos) + ":" + Converte(segundo);
 
+            lblCronometro.Text = Converte(minutos) + ":" + Converte(segundo);
         }
 
         public string Converte(int numero)
@@ -96,7 +118,9 @@ namespace Jogo_da_Velha
                 return "0" + numero.ToString();
             }
             else
+            {
                 return numero.ToString();
+            }
         }
 
         private void cmd_Click(object sender, EventArgs e)
@@ -129,7 +153,7 @@ namespace Jogo_da_Velha
 
         public void Checagem(int ChecagemPlayer)
         {
-            string suporte = "";
+            string suporte;
 
             if (ChecagemPlayer == 1)
             {
@@ -188,9 +212,15 @@ namespace Jogo_da_Velha
             if (Rodadas == 9 && jogofinal == false)
             {
                 Empates++;
+                
                 lblEmpates.Text = Convert.ToString(Empates);
+                
                 MessageBox.Show("Empate !");
+                
                 jogofinal = true;
+
+                limparJogo();
+                
                 return;
             }
         }
@@ -202,30 +232,50 @@ namespace Jogo_da_Velha
             if (PlayerVitorioso == 1)
             {
                 PontosX++;
+
                 lblXPontos.Text = Convert.ToString(PontosX);
+                
                 MessageBox.Show("Jogador X ganhou");
+                
                 if (P1.Tipo == "X")
+                {
                     P1.Pontos = PontosX;
+                }
                 else if (P2.Tipo == "X")
+                {
                     P2.Pontos = PontosX;
+                }
+
                 turno = true;
             }
             else
             {
                 PontosO++;
+
                 lblOPontos.Text = Convert.ToString(PontosO);
+                
                 MessageBox.Show("Jogador O ganhou");
+                
                 if (P1.Tipo == "O")
+                {
                     P1.Pontos = PontosO;
+                }
                 else if (P2.Tipo == "O")
+                {
                     P2.Pontos = PontosO;
+                }
+
                 turno = false;
             }
 
+            limparJogo();
         }
 
-        private void cmdLimpar_Click(object sender, EventArgs e)
+        private void limparJogo()
         {
+            Rodadas = 0;
+            jogofinal = false;
+
             cmd.Text = "";
             button1.Text = "";
             button2.Text = "";
@@ -236,12 +286,36 @@ namespace Jogo_da_Velha
             button7.Text = "";
             button8.Text = "";
 
-            Rodadas = 0;
-            jogofinal = false;
             for (int i = 0; i < 9; i++)
             {
                 texto[i] = "";
             }
+        }
+
+        private void bloqueiaJogo()
+        {
+            cmd.Enabled = false;
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+        }
+
+        private void habilitaJogo()
+        {
+            cmd.Enabled = true;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
+            button7.Enabled = true;
+            button8.Enabled = true;
         }
     }
 }

@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblCronometro = new System.Windows.Forms.Label();
             this.panelSeleciona = new System.Windows.Forms.Panel();
             this.cmdConfirma = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.lblEmpates = new System.Windows.Forms.Label();
             this.lblOPontos = new System.Windows.Forms.Label();
             this.lblXPontos = new System.Windows.Forms.Label();
-            this.cmdLimpar = new System.Windows.Forms.Button();
             this.cmdIrRanking = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
@@ -58,6 +58,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblCronometro);
             this.panel1.Controls.Add(this.panelSeleciona);
             this.panel1.Controls.Add(this.button8);
@@ -74,12 +75,23 @@
             this.panel1.Size = new System.Drawing.Size(711, 287);
             this.panel1.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(35, 248);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(150, 24);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Tempo de jogo: ";
+            // 
             // lblCronometro
             // 
             this.lblCronometro.AutoSize = true;
             this.lblCronometro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCronometro.ForeColor = System.Drawing.Color.Red;
-            this.lblCronometro.Location = new System.Drawing.Point(232, 237);
+            this.lblCronometro.Location = new System.Drawing.Point(183, 248);
             this.lblCronometro.Name = "lblCronometro";
             this.lblCronometro.Size = new System.Drawing.Size(55, 24);
             this.lblCronometro.TabIndex = 14;
@@ -277,7 +289,7 @@
             this.panel2.Controls.Add(this.lblEmpates);
             this.panel2.Controls.Add(this.lblOPontos);
             this.panel2.Controls.Add(this.lblXPontos);
-            this.panel2.Location = new System.Drawing.Point(4, 342);
+            this.panel2.Location = new System.Drawing.Point(12, 321);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(495, 134);
             this.panel2.TabIndex = 1;
@@ -348,25 +360,12 @@
             this.lblXPontos.TabIndex = 0;
             this.lblXPontos.Text = "0";
             // 
-            // cmdLimpar
-            // 
-            this.cmdLimpar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cmdLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdLimpar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cmdLimpar.Location = new System.Drawing.Point(90, 296);
-            this.cmdLimpar.Name = "cmdLimpar";
-            this.cmdLimpar.Size = new System.Drawing.Size(168, 40);
-            this.cmdLimpar.TabIndex = 2;
-            this.cmdLimpar.Text = "Limpar";
-            this.cmdLimpar.UseVisualStyleBackColor = false;
-            this.cmdLimpar.Click += new System.EventHandler(this.cmdLimpar_Click);
-            // 
             // cmdIrRanking
             // 
             this.cmdIrRanking.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cmdIrRanking.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdIrRanking.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cmdIrRanking.Location = new System.Drawing.Point(319, 296);
+            this.cmdIrRanking.Location = new System.Drawing.Point(536, 372);
             this.cmdIrRanking.Name = "cmdIrRanking";
             this.cmdIrRanking.Size = new System.Drawing.Size(144, 40);
             this.cmdIrRanking.TabIndex = 9;
@@ -386,7 +385,6 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(716, 481);
             this.Controls.Add(this.cmdIrRanking);
-            this.Controls.Add(this.cmdLimpar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -425,7 +423,6 @@
         private System.Windows.Forms.Label lblEmpates;
         private System.Windows.Forms.Label lblOPontos;
         private System.Windows.Forms.Label lblXPontos;
-        private System.Windows.Forms.Button cmdLimpar;
         private System.Windows.Forms.Button cmdIrRanking;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -435,5 +432,6 @@
         private System.Windows.Forms.Button cmdConfirma;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblCronometro;
+        private System.Windows.Forms.Label label2;
     }
 }
